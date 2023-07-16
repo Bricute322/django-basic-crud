@@ -12,11 +12,7 @@ from django.shortcuts import get_object_or_404
 class CreateGroceryNameViews(APIView):
     def post(self, request):
         serializer = GrocerySerializers(data=request.data)
-        data = {}
-        errors = {}
-        status = None
-        message = None
-
+        data, errors, status, message = {}, {}, None, None
         if serializer.is_valid():
             name = request.data['name']
             if Grocery.objects.filter(name=name).exists():
@@ -46,11 +42,7 @@ class CreateGroceryNameViews(APIView):
 
 class DisplayGroceryItemViews(APIView):
     def get(self, request):
-        data = {}
-        errors = {}
-        status = None
-        message = None
-
+        data, errors, status, message = {}, {}, None, None
         grocery = Grocery.objects.all().values('id', 'name', 'price', 'description')
         data = grocery
         message = 'Success'
@@ -80,11 +72,7 @@ class UpdateGroceryItemViews(APIView):
 
 class DeleteGroceryItemViews(APIView):
     def delete(self, request, *args, **kwargs):
-        data = {}
-        errors = {}
-        status = None
-        message = None
-
+        data, errors, status, message = {}, {}, None, None
         grocery_id = request.query_params['id']
 
         if grocery_id:
