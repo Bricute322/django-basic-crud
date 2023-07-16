@@ -25,10 +25,23 @@ SECRET_KEY = 'django-insecure-of766)$q^674hp$k&q2^0=p%+%^-bzlork10(45x(i*@5l+9(_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://localhost:8081', 'brain322.pythonanywhere.com']
 
 
 # Application definition
+CORS_ALLOWED_ORIGINS = [
+    "brain322.pythonanywhere.com",
+    "https://localhost:8081/",
+    "https://localhost:8080/",
+    "http://localhost:8080/",
+    "http://127.0.0.1:8080/",
+    "http://localhost:8081/",
+    'http://localhost:8080/',
+    'http://127.0.0.1:8000/'
+
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,6 +67,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
 
 ROOT_URLCONF = 'groceries.urls'
 
